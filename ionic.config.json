@@ -1,0 +1,7 @@
+{
+  "name": "NotaCV",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
