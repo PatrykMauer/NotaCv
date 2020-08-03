@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import {UserData} from '../providers/user-data';
+import {UserData} from '../../providers/user-data';
 import { AlertController } from '@ionic/angular';
 
 @Component({
