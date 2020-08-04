@@ -12,10 +12,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/account/account.module').then( m => m.AccountPageModule)
   },
   {
-    path: 'gallery',
-    loadChildren: () => import('./pages/gallery/gallery.module').then( m => m.GalleryPageModule)
-  },
-  {
     path: 'inbox',
     loadChildren: () => import('./pages/inbox/inbox.module').then( m => m.InboxPageModule)
   },

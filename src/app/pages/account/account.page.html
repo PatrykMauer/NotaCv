@@ -7,16 +7,38 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div *ngIf="username" class="ion-padding-top ion-text-center">
-    <img src="https://media-exp1.licdn.com/dms/image/C4E03AQFDagqj7fgQVg/profile-displayphoto-shrink_200_200/0?e=1601510400&v=beta&t=qOoci5KrxNnZGr6l1SJ2t53gfSzaMusPMxyvvgXZYSA" alt="avatar">
-    <h2>{{username}}</h2>
+<ion-content [fullscreen]="true" *ngIf="user">
+  <ion-row>
+    <ion-col class="content-col">
+      <ion-thumbnail class="user-image">
+        <img src="{{user.photo}}">
+      </ion-thumbnail>
+      <ion-label class="custom-file-upload" routerLink="./edit-account">
+        <ion-icon margin-right name="create-outline" ></ion-icon> Edit profile
+      </ion-label>
+      <ion-text color="dark">
+        <h2 class="user-name">{{user.firstName}} {{user.lastName}}</h2>
+      </ion-text>
 
-    <ion-list inset>
-      <ion-item  routerLink="/gallery">Update Picture</ion-item>
-   
-      <ion-item (click)="changeUsername()">Change Username</ion-item>
-    </ion-list>
-  </div>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Username</ion-label>
+          <ion-input color="primary" readonly="true">{{user.username}}</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Phone</ion-label>
+          <ion-input color="primary" readonly="true">{{user.phone}}</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Email</ion-label>
+          <ion-input color="primary" readonly="true">{{user.email}}</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Describiton</ion-label>
+          <ion-input color="primary" readonly="true">{{user.describtion}}</ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
 </ion-content>
 
