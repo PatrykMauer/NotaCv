@@ -3,10 +3,10 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-avatar slot="end" >
-      <ion-img routerLink='/account' src="https://media-exp1.licdn.com/dms/image/C4E03AQFDagqj7fgQVg/profile-displayphoto-shrink_200_200/0?e=1601510400&v=beta&t=qOoci5KrxNnZGr6l1SJ2t53gfSzaMusPMxyvvgXZYSA"></ion-img>
+    <ion-avatar slot="primary" *ngIf="user">
+      <ion-img routerLink='/account' src="{{user.photo}}"></ion-img>
     </ion-avatar>
-    <ion-title>Outbox</ion-title>
+    <ion-title >Outbox</ion-title>
   </ion-toolbar>
 </ion-header>
 

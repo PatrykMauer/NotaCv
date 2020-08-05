@@ -41,7 +41,8 @@ export class EditAccountPage implements OnInit {
         'lastName': new FormControl(this.user.lastName, Validators.required),
         'email': new FormControl(this.user.email, Validators.required),
         'phone': new FormControl(this.user.phone, Validators.required),
-        'describtion': new FormControl(this.user.describtion, Validators.required)
+        'describtion': new FormControl(this.user.describtion, Validators.required),
+        'gender': new FormControl(this.user.gender, Validators.required)
       });
 
       this.editProfileForm.valueChanges.subscribe(values => {
@@ -54,10 +55,10 @@ export class EditAccountPage implements OnInit {
     this.updateForm.onSubmit(undefined);
   }
 
-  async updateContact(values: User, photo: string) {
+  async updateAccount(values: User, photo: string) {
     values.photo=photo;
-    let updatedContact: User = { ...values, };
-    const userUpdated = await this.dataService.updateContact(updatedContact);
+    let updatedUser: User = { ...values, };
+    const userUpdated = await this.dataService.updateUser(updatedUser);
     if ( userUpdated != null) {
       this.router.navigate(['/account']);
     }

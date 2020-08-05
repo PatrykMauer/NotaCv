@@ -8,12 +8,15 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class OutboxPage implements OnInit {
 
+  public user:User;
+
   constructor(
     private dataService: DataService
     ) { }
 
   ngOnInit() {
-    
+    this.dataService.getUser()
+    .subscribe(user=>this.user=user);
   }
 
 }

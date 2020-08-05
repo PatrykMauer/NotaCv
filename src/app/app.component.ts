@@ -41,11 +41,6 @@ export class AppComponent implements OnInit {
       title: 'Spam',
       url: 'spam',
       icon: 'warning'
-    },
-    {
-      title: 'Gallery',
-      url: '/gallery',
-      icon: 'warning'
     }
   ];
 

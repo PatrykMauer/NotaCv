@@ -22,7 +22,7 @@ export class DataService {
     }
   }
 
-  updateContact(user: User): User {
+  updateUser(user: User): User {
     this.user = user;
     return user;
   }

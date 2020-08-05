@@ -1,14 +1,13 @@
 <ion-header *ngIf="user">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button color="primary" routerLink='/account'>
+      <ion-button routerLink='/account'>
         Cancel
       </ion-button>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-button
        strong="true"
-       color="primary" 
        [disabled]="!editProfileForm.valid || !formIsEdited" 
        (click)="submitForm()">
         Done
@@ -18,10 +17,8 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf="user">
-  <ion-row>
-    <ion-thumbnail class="user-image">
-      <img src="{{user.photo}}">
-    </ion-thumbnail>
+  <ion-row class="ion-justify-content-center">
+      <img class="circle" src="{{user.photo}}">
   </ion-row>
   <ion-row>
     <ion-label 
@@ -29,14 +26,14 @@
     style="margin:auto;max-width:200px" 
     routerLink='../gallery'
     (click)="onEdited()">
-      <ion-icon margin-right name="cloud-download"></ion-icon> Select profile photo
+      <ion-icon margin-right name="cloud-download"></ion-icon> Select photo
     </ion-label>
   </ion-row>
 
   <form 
   [formGroup]="editProfileForm" 
   #updateForm="ngForm" 
-  (ngSubmit)="updateContact(editProfileForm.value, user.photo)" 
+  (ngSubmit)="updateAccount(editProfileForm.value, user.photo)" 
   *ngIf="user">
     <ion-list lines="full">
       <ion-item>
@@ -54,12 +51,11 @@
       <ion-item>
         <ion-input placeholder="Phone" inputMode="tel" clearInput="true" formControlName="phone" required></ion-input>
       </ion-item>
-      <ion-item-divider></ion-item-divider>
       <ion-item>
-        <ion-label>Sex</ion-label>
-        <ion-select placeholder="Select One" formControlName="describtion">
-          <ion-select-option value="Family">Male</ion-select-option>
-          <ion-select-option value="Friend">Female</ion-select-option>
+        <ion-label>Gender</ion-label>
+        <ion-select placeholder="Select One" formControlName="gender">
+          <ion-select-option value="Male">Male</ion-select-option>
+          <ion-select-option value="Female">Female</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-list>
