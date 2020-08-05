@@ -8,9 +8,9 @@ import { tap, map } from 'rxjs/operators';
 })
 export class DataService {
 
-  private user : User;
+  private user : User
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   getUser(): Observable<User> {
     if(this.user){
@@ -26,4 +26,9 @@ export class DataService {
     this.user = user;
     return user;
   }
+
+  updatePhoto(photo:Photo)
+  {
+    this.user.photo=photo.base64;
+  } 
 }

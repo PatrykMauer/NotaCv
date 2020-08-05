@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActionSheetController } from '@ionic/angular';
 import { PhotoService } from '../../services/photo.service';
+import { DataService } from 'src/app/services/data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-gallery',
@@ -9,7 +11,11 @@ import { PhotoService } from '../../services/photo.service';
 })
 export class GalleryPage implements OnInit {
 
-  constructor(public photoService: PhotoService, public actionSheetController: ActionSheetController) {}
+  constructor(
+     public photoService: PhotoService,
+     public actionSheetController: ActionSheetController,
+     public dataService: DataService,
+     public router: Router) {}
 
   ngOnInit() {
     this.photoService.loadSaved();
@@ -18,7 +24,16 @@ export class GalleryPage implements OnInit {
   public async showActionSheet(photo, position) {
     const actionSheet = await this.actionSheetController.create({
       header: 'Photos',
-      buttons: [{
+      buttons: [
+        {
+          text: 'Set Profile Picture',
+          icon: 'checkmark-circle',
+          handler: () => {
+            this.dataService.updatePhoto(photo);
+            this.router.navigateByUrl('/account/edit-account');
+          }
+        },
+        {
         text: 'Delete',
         role: 'destructive',
         icon: 'trash',
