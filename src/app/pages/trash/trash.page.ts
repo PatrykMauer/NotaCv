@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-trash',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrashPage implements OnInit {
 
-  constructor() { }
+  public user:User;
+
+  constructor(
+    private dataService: DataService
+    ) { }
 
   ngOnInit() {
+    this.dataService.getUser()
+    .subscribe(user=>this.user=user);
   }
 
 }

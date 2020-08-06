@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { TrashPageRoutingModule } from './trash-routing.module';
 
 import { TrashPage } from './trash.page';
+import { AvatarModule } from 'src/app/avatar/avatar.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    TrashPageRoutingModule
+    TrashPageRoutingModule,
+    AvatarModule
   ],
   declarations: [TrashPage]
 })
