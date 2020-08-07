@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormGroupDirective } from '@angular/forms';
 import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
+import { LoadingController } from '@ionic/angular';
 
 
 
@@ -15,6 +16,7 @@ export class EditAccountPage implements OnInit {
   public user: User;
   editProfileForm: FormGroup;
   formIsEdited: boolean = false;
+  isLoading=false;
   
 
   @ViewChild('updateForm', { static: false }) updateForm: FormGroupDirective;
@@ -23,6 +25,7 @@ export class EditAccountPage implements OnInit {
   constructor(
     private dataService: DataService,
     private router: Router,
+    private loadingCtrl: LoadingController
   ) { }
 
   ngOnInit() {
@@ -53,15 +56,28 @@ export class EditAccountPage implements OnInit {
 
   submitForm() {
     this.updateForm.onSubmit(undefined);
+
   }
 
   async updateAccount(values: User, photo: string) {
-    values.photo=photo;
-    let updatedUser: User = { ...values, };
-    const userUpdated = await this.dataService.updateUser(updatedUser);
-    if ( userUpdated != null) {
-      this.router.navigate(['/account']);
-    }
+    this.loadingCtrl.create({ 
+      keyboardClose:true, 
+      message: '<ion-img src="assets/notaCv.gif"></ion-img> Updating profile..."',
+      })
+    .then(loadingEl=>{
+      loadingEl.present();
+
+      setTimeout(()=>{
+        values.photo=photo;
+        let updatedUser: User = { ...values, };
+        const userUpdated = this.dataService.updateUser(updatedUser);
+
+        loadingEl.dismiss();
+      
+      if ( userUpdated != null) {
+        this.router.navigate(['/account']);
+      }},1000);
+    })
   }
 
   onEdited(){
