@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'src/app/services/data.service';
 
 @Component({
   selector: 'app-avatar',
@@ -7,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AvatarComponent implements OnInit {
 
-  constructor() { }
+  public user:User;
 
-  ngOnInit() {}
+  constructor(
+    private dataService: DataService
+    ) { }
+
+  ngOnInit() {
+    this.dataService.getUser()
+    .subscribe(user=>this.user=user);
+  }
 
 }
