@@ -34,3 +34,19 @@
     background: white;
     border: 2px solid grey;
 }
+
+.spinner{
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    box-shadow: none;
+}
+
+.custom-loading {
+    --background: none;
+
+    .loading-wrapper{
+        box-shadow: none !important;
+        -webkit-box-shadow: !important;
+    }
+ }

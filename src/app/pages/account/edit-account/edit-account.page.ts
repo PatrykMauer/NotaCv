@@ -62,8 +62,11 @@ export class EditAccountPage implements OnInit {
   async updateAccount(values: User, photo: string) {
     this.loadingCtrl.create({ 
       keyboardClose:true, 
-      message: '<ion-img src="assets/notaCv.gif"></ion-img> Updating profile..."',
-      })
+      message: 
+      '<ion-img class="spinner" src="assets/notaCv.gif"></ion-img>',
+      spinner: null,
+      cssClass: 'custom-loading',
+    })
     .then(loadingEl=>{
       loadingEl.present();
 
@@ -76,7 +79,7 @@ export class EditAccountPage implements OnInit {
       
       if ( userUpdated != null) {
         this.router.navigate(['/account']);
-      }},1000);
+      }},5000);
     })
   }
 
