@@ -79,7 +79,7 @@ export class EditAccountPage implements OnInit {
       
       if ( userUpdated != null) {
         this.router.navigate(['/account']);
-      }},5000);
+      }},2000);
     })
   }
 
