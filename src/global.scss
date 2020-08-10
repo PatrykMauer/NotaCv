@@ -24,3 +24,28 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.circle{
+    padding: 5px;
+    width: 200px;
+    margin-top: 25px;
+    height: 200px;
+    border-radius: 100%;
+    background: white;
+    border: 2px solid grey;
+}
+
+.spinner{
+    width: 150px;
+    height: 150px;
+    box-shadow: none;
+}
+
+.custom-loading {
+    --background: none;
+
+    .loading-wrapper{
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+    }
+ }
