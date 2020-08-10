@@ -1,13 +1,15 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Observable, of, BehaviorSubject } from "rxjs";
+import { BehaviorSubject } from "rxjs";
 import { tap, map, take } from "rxjs/operators";
 import { User } from "../models/user";
+import { Plugins } from "@capacitor/core";
+const { Storage } = Plugins;
 
 @Injectable({
   providedIn: "root",
 })
 export class DataService {
+  private _selectedPhoto = new BehaviorSubject<string>(null);
   private _user = new BehaviorSubject<User>(
     new User(
       "Patryk",
@@ -21,40 +23,21 @@ export class DataService {
     )
   );
 
-  constructor(private http: HttpClient) {}
-
-  get user() {
-    return this._user.asObservable();
-  }
+  constructor() {}
 
   getUser() {
-    return this.user;
+    return this._user.asObservable();
   }
 
   updateUser(user: User) {
     this._user.next(user);
   }
 
-  updatePhoto(photo: string) {
-    return this.user
-      .pipe(
-        take(1),
-        tap(user => {
-          console.log("tap works");
+  getSelectedPhoto() {
+    return this._selectedPhoto.asObservable();
+  }
 
-          const updatedUser = new User(
-            user.firstName,
-            user.lastName,
-            photo,
-            user.describtion,
-            user.username,
-            user.phone,
-            user.email,
-            user.gender
-          );
-          this._user.next(updatedUser);
-        })
-      )
-      .subscribe();
+  selectPhoto(selectedPhoto: string) {
+    this._selectedPhoto.next(selectedPhoto);
   }
 }

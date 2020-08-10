@@ -29,7 +29,7 @@ export class GalleryPage implements OnInit {
           text: "Set Profile Picture",
           icon: "checkmark-circle",
           handler: () => {
-            this.dataService.updatePhoto(
+            this.dataService.selectPhoto(
               photo.base64 ? photo.base64 : photo.webviewPath
             );
             this.router.navigateByUrl("/account/edit-account");

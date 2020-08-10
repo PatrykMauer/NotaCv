@@ -1,7 +1,7 @@
 <ion-header *ngIf="user">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button routerLink="/account">
+      <ion-button routerLink="/account" (click)="onCancel()">
         Cancel
       </ion-button>
     </ion-buttons>
@@ -20,7 +20,10 @@
 
 <ion-content [fullscreen]="true" *ngIf="user">
   <ion-row class="ion-justify-content-center">
-    <img class="circle" src="{{ user.photo}}" />
+    <img
+      class="circle"
+      src="{{this.selectedPhoto? this.selectedPhoto : user.photo}}"
+    />
   </ion-row>
   <ion-row>
     <ion-label
@@ -36,7 +39,7 @@
   <form
     [formGroup]="editProfileForm"
     #updateForm="ngForm"
-    (ngSubmit)="updateAccount(editProfileForm.value, user.photo)"
+    (ngSubmit)="updateAccount(editProfileForm.value, selectedPhoto)"
     *ngIf="user"
   >
     <ion-row class="ion-justify-content-center">
