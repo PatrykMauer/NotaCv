@@ -5,11 +5,12 @@ import {
   Validators,
   FormGroupDirective,
 } from "@angular/forms";
-import { DataService } from "src/app/services/data.service";
 import { Router } from "@angular/router";
 import { LoadingController } from "@ionic/angular";
-import { User } from "../../../models/user";
 import { Subscription } from "rxjs";
+
+import { User } from "../../../models/user";
+import { DataService } from "src/app/services/data.service";
 
 @Component({
   selector: "app-edit-account",
@@ -17,12 +18,12 @@ import { Subscription } from "rxjs";
   styleUrls: ["./edit-account.page.scss"],
 })
 export class EditAccountPage implements OnInit, OnDestroy {
+  private userSub: Subscription;
+  private photoSub: Subscription;
+  formIsEdited: boolean = false;
   user: User;
   selectedPhoto: string;
   editProfileForm: FormGroup;
-  formIsEdited: boolean = false;
-  private userSub: Subscription;
-  private photoSub: Subscription;
 
   @ViewChild("updateForm", { static: false }) updateForm: FormGroupDirective;
 

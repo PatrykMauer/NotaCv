@@ -3,7 +3,7 @@ import { BehaviorSubject } from "rxjs";
 import { tap, map, take } from "rxjs/operators";
 import { User } from "../models/user";
 import { Plugins } from "@capacitor/core";
-const { Storage } = Plugins;
+const { Camera, Filesystem, Storage } = Plugins;
 
 @Injectable({
   providedIn: "root",
