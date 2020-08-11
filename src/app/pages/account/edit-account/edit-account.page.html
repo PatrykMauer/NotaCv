@@ -39,7 +39,7 @@
   <form
     [formGroup]="editProfileForm"
     #updateForm="ngForm"
-    (ngSubmit)="updateAccount(editProfileForm.value, selectedPhoto)"
+    (ngSubmit)="updateAccount(editProfileForm.value)"
     *ngIf="user"
   >
     <ion-row class="ion-justify-content-center">
