@@ -1,4 +1,3 @@
-
-<ion-avatar routerLink='/account' slot="primary" *ngIf="user">
-  <ion-img  src="{{user.photo}}"></ion-img>
+<ion-avatar slot="primary" *ngIf="user" (click)="onAvatar()">
+  <ion-img src="{{ user.photo }}"></ion-img>
 </ion-avatar>

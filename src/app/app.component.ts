@@ -1,48 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
-import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Platform } from "@ionic/angular";
+import { SplashScreen } from "@ionic-native/splash-screen/ngx";
+import { StatusBar } from "@ionic-native/status-bar/ngx";
+
+import { appPages } from "../app/shared/appPages";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  selector: "app-root",
+  templateUrl: "app.component.html",
+  styleUrls: ["app.component.scss"],
 })
 export class AppComponent implements OnInit {
   public selectedIndex = 0;
-  public appPages = [
-    {
-      title: 'Inbox',
-      url: 'inbox',
-      icon: 'mail'
-    },
-    {
-      title: 'Outbox',
-      url: 'outbox',
-      icon: 'paper-plane'
-    },
-    {
-      title: 'Favorites',
-      url: 'favorites',
-      icon: 'heart'
-    },
-    {
-      title: 'Archived',
-      url: 'archived',
-      icon: 'archive'
-    },
-    {
-      title: 'Trash',
-      url: 'trash',
-      icon: 'trash'
-    },
-    {
-      title: 'Spam',
-      url: 'spam',
-      icon: 'warning'
-    }
-  ];
+  readonly appPages = appPages;
 
   constructor(
     private platform: Platform,
@@ -60,9 +31,11 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    const path = window.location.pathname.split('folder/')[1];
+    const path = window.location.pathname.split("folder/")[1];
     if (path !== undefined) {
-      this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path.toLowerCase());
+      this.selectedIndex = appPages.findIndex(
+        page => page.title.toLowerCase() === path.toLowerCase()
+      );
     }
   }
 }

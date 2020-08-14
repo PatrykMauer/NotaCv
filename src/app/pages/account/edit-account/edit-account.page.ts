@@ -10,6 +10,7 @@ import { LoadingController } from "@ionic/angular";
 import { Subscription } from "rxjs";
 
 import { User } from "../../../models/user";
+import { paths } from "../../../shared/paths";
 import { DataService } from "src/app/services/data.service";
 
 @Component({
@@ -37,7 +38,7 @@ export class EditAccountPage implements OnInit, OnDestroy {
     this.userSub = this.dataService.getUser().subscribe(user => {
       this.user = user;
       if (!this.user) {
-        this.router.navigateByUrl("/account");
+        this.router.navigateByUrl(paths.account);
       }
 
       this.editProfileForm = new FormGroup({
@@ -90,18 +91,22 @@ export class EditAccountPage implements OnInit, OnDestroy {
           loadingEl.dismiss();
 
           if (userUpdated != null) {
-            this.router.navigate(["/account"]);
+            this.router.navigateByUrl(paths.account);
           }
         }, 1000);
       });
+
+    this.router.navigateByUrl(paths.account);
   }
 
   onEdited() {
     this.formIsEdited = true;
+    this.router.navigateByUrl(paths.gallery);
   }
 
   onCancel() {
     this.dataService.selectPhoto(null);
+    this.router.navigateByUrl(paths.account);
   }
 
   ngOnDestroy() {

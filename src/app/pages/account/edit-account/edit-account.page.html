@@ -1,7 +1,7 @@
 <ion-header *ngIf="user">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button routerLink="/account" (click)="onCancel()">
+      <ion-button (click)="onCancel()">
         Cancel
       </ion-button>
     </ion-buttons>
@@ -9,7 +9,6 @@
       <ion-button
         strong="true"
         [disabled]="!editProfileForm.valid || !formIsEdited"
-        routerLink="/account"
         (click)="submitForm()"
       >
         Done
@@ -29,7 +28,6 @@
     <ion-label
       class="custom-file-upload"
       style="margin: auto; max-width: 200px;"
-      routerLink="../gallery"
       (click)="onEdited()"
     >
       <ion-icon margin-right name="cloud-download"></ion-icon> Select photo
