@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,27 +25,43 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.circle{
-    padding: 5px;
-    width: 200px;
-    margin-top: 25px;
-    height: 200px;
-    border-radius: 100%;
-    background: white;
-    border: 2px solid grey;
-}
-
-.spinner{
-    width: 150px;
-    height: 150px;
-    box-shadow: none;
+.spinner {
+  width: 150px;
+  height: 150px;
+  box-shadow: none;
 }
 
 .custom-loading {
-    --background: none;
+  --background: none;
 
-    .loading-wrapper{
-        box-shadow: none !important;
-        -webkit-box-shadow: none !important;
-    }
- }
+  .loading-wrapper {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+  }
+}
+
+.row--center {
+  justify-content: center;
+}
+
+.img--theme-circle {
+  padding: 5px;
+  width: 200px;
+  margin-top: 25px;
+  height: 200px;
+  border-radius: 100%;
+  background: white;
+  border: 2px solid grey;
+}
+
+.label--theme-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  width: 100%;
+  text-align: center;
+  color: var(--ion-color-primary);
+  margin: auto;
+  max-width: 200px;
+}

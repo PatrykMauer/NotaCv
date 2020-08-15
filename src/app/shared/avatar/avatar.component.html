@@ -1,3 +1,8 @@
-<ion-avatar slot="primary" *ngIf="user" (click)="onAvatar()">
+<ion-avatar
+  class="avatar avatar--sm avatar--pointer avatar--margin-right"
+  slot="primary"
+  *ngIf="user"
+  (click)="onAvatar()"
+>
   <ion-img src="{{ user.photo }}"></ion-img>
 </ion-avatar>

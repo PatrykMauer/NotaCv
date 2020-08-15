@@ -22,19 +22,15 @@
   <ng-container *ngTemplateOutlet="form"></ng-container>
 
   <ng-template #avatar>
-    <ion-row class="ion-justify-content-center">
+    <ion-row class="row row--center">
       <img
-        class="circle"
+        class="img img--theme-circle"
         src="{{this.selectedPhoto? this.selectedPhoto : user.photo}}"
       />
     </ion-row>
-    <ion-row>
-      <ion-label
-        class="custom-file-upload"
-        style="margin: auto; max-width: 200px;"
-        (click)="onEdited()"
-      >
-        <ion-icon margin-right name="cloud-download"></ion-icon> Select photo
+    <ion-row class="row row--center">
+      <ion-label class="label label--theme-upload" (click)="onEdited()">
+        <ion-icon name="cloud-download"></ion-icon> Select photo
       </ion-label>
     </ion-row>
   </ng-template>
@@ -46,7 +42,7 @@
       (ngSubmit)="updateAccount(editProfileForm.value)"
       *ngIf="user"
     >
-      <ion-row class="ion-justify-content-center">
+      <ion-row class="row row--center">
         <ion-col size-md="7">
           <ion-list>
             <ion-item>

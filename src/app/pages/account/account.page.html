@@ -8,24 +8,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf="user">
-  <ion-row class="ion-justify-content-center">
-    <img class="circle" src="{{user.photo}}" />
+  <ion-row class="row row--center">
+    <img class="img img--theme-circle" src="{{user.photo}}" />
   </ion-row>
   <ion-row>
-    <ion-label
-      class="custom-file-upload"
-      style="margin: auto; max-width: 200px;"
-      (click)="onEdit()"
-    >
+    <ion-label class="label label--theme-upload" (click)="onEdit()">
       <ion-icon name="create-outline"></ion-icon> Edit profile
     </ion-label>
   </ion-row>
-  <ion-row class="ion-justify-content-center">
-    <ion-text color="dark">
+  <ion-row class="row row--center">
+    <ion-text>
       <h2>{{user.firstName}} {{user.lastName}}</h2>
     </ion-text>
   </ion-row>
-  <ion-row class="ion-justify-content-center">
+  <ion-row class="row row--center">
     <ion-col size-md="7">
       <ion-list>
         <ion-item>

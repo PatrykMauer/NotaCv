@@ -3,6 +3,7 @@ import { ActionSheetController } from "@ionic/angular";
 import { PhotoService } from "../../services/photo.service";
 import { UserService } from "src/app/services/user.service";
 import { Router } from "@angular/router";
+import { paths } from "src/app/shared/paths";
 
 @Component({
   selector: "app-gallery",
@@ -10,6 +11,8 @@ import { Router } from "@angular/router";
   styleUrls: ["./gallery.page.scss"],
 })
 export class GalleryPage implements OnInit {
+  paths: Paths = paths;
+
   constructor(
     public photoService: PhotoService,
     public actionSheetController: ActionSheetController,
