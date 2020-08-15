@@ -8,28 +8,27 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf="user">
-  <ion-row class="ion-justify-content-center">
-    <img class="circle" src="{{user.photo}}">
-  </ion-row>   
-  <ion-row>    
-   <ion-label 
-      class="custom-file-upload" 
-      style="margin:auto;max-width:200px"
-      routerLink="./edit-account">
-      <ion-icon name="create-outline" ></ion-icon> Edit profile
+  <ion-row class="row row--center">
+    <img class="img img--theme-circle" src="{{user.photo}}" />
+  </ion-row>
+  <ion-row>
+    <ion-label class="label label--theme-upload" (click)="onEdit()">
+      <ion-icon name="create-outline"></ion-icon> Edit profile
     </ion-label>
   </ion-row>
-  <ion-row class="ion-justify-content-center">
-    <ion-text color="dark">
-      <h2 class="user-name">{{user.firstName}} {{user.lastName}}</h2>
+  <ion-row class="row row--center">
+    <ion-text>
+      <h2>{{user.firstName}} {{user.lastName}}</h2>
     </ion-text>
   </ion-row>
-  <ion-row class="ion-justify-content-center">
-    <ion-col size-md=7>
+  <ion-row class="row row--center">
+    <ion-col size-md="7">
       <ion-list>
         <ion-item>
           <ion-label position="stacked">Username</ion-label>
-          <ion-input color="primary" readonly="true">{{user.username}}</ion-input>
+          <ion-input color="primary" readonly="true"
+            >{{user.username}}</ion-input
+          >
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Phone</ion-label>
@@ -41,7 +40,9 @@
         </ion-item>
         <ion-item>
           <ion-label class="bold" position="stacked">Describiton</ion-label>
-          <ion-input color="primary" readonly="true">{{user.describtion}}</ion-input>
+          <ion-input color="primary" readonly="true"
+            >{{user.describtion}}</ion-input
+          >
         </ion-item>
         <ion-item>
           <ion-label color="cont" position="stacked">Gender</ion-label>
@@ -49,6 +50,5 @@
         </ion-item>
       </ion-list>
     </ion-col>
-</ion-row>
+  </ion-row>
 </ion-content>
-

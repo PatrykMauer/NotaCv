@@ -1,40 +1,44 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild, OnDestroy } from "@angular/core";
 import {
   FormGroup,
   FormControl,
   Validators,
   FormGroupDirective,
 } from "@angular/forms";
-import { DataService } from "src/app/services/data.service";
 import { Router } from "@angular/router";
 import { LoadingController } from "@ionic/angular";
+import { Subscription } from "rxjs";
+
 import { User } from "../../../models/user";
+import { paths } from "../../../shared/paths";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-edit-account",
   templateUrl: "./edit-account.page.html",
   styleUrls: ["./edit-account.page.scss"],
 })
-export class EditAccountPage implements OnInit {
-  user: User;
-  editProfileForm: FormGroup;
+export class EditAccountPage implements OnInit, OnDestroy {
+  private userSub: Subscription;
+  private photoSub: Subscription;
   formIsEdited: boolean = false;
-  isLoading = false;
+  user: User;
+  selectedPhoto: string;
+  editProfileForm: FormGroup;
 
   @ViewChild("updateForm", { static: false }) updateForm: FormGroupDirective;
 
   constructor(
-    private dataService: DataService,
+    private dataService: UserService,
     private router: Router,
     private loadingCtrl: LoadingController
   ) {}
 
   ngOnInit() {
-    this.dataService.getUser().subscribe(user => {
+    this.userSub = this.dataService.getUser().subscribe(user => {
       this.user = user;
-
       if (!this.user) {
-        this.router.navigateByUrl("/account");
+        this.router.navigateByUrl(paths.account);
       }
 
       this.editProfileForm = new FormGroup({
@@ -54,13 +58,19 @@ export class EditAccountPage implements OnInit {
         this.formIsEdited = true;
       });
     });
+
+    this.photoSub = this.dataService.getSelectedPhoto().subscribe(photo => {
+      if (photo) {
+        this.selectedPhoto = photo;
+      }
+    });
   }
 
   submitForm() {
     this.updateForm.onSubmit(undefined);
   }
 
-  async updateAccount(values: User, photo: Photo) {
+  async updateAccount(values: User) {
     this.loadingCtrl
       .create({
         keyboardClose: true,
@@ -72,20 +82,40 @@ export class EditAccountPage implements OnInit {
         loadingEl.present();
 
         setTimeout(() => {
-          values.photo = photo.base64 ? photo.base64 : photo.webviewPath;
+          values.photo = this.selectedPhoto
+            ? this.selectedPhoto
+            : this.user.photo;
           let updatedUser: User = { ...values };
           const userUpdated = this.dataService.updateUser(updatedUser);
 
           loadingEl.dismiss();
 
           if (userUpdated != null) {
-            this.router.navigate(["/account"]);
+            this.router.navigateByUrl(paths.account);
           }
-        }, 2000);
+        }, 1000);
       });
+
+    this.router.navigateByUrl(paths.account);
   }
 
   onEdited() {
     this.formIsEdited = true;
+    this.router.navigateByUrl(paths.gallery);
+  }
+
+  onCancel() {
+    this.dataService.selectPhoto(null);
+    this.router.navigateByUrl(paths.account);
+  }
+
+  ngOnDestroy() {
+    if (this.userSub) {
+      this.userSub.unsubscribe();
+    }
+
+    if (this.photoSub) {
+      this.photoSub.unsubscribe();
+    }
   }
 }

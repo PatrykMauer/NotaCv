@@ -1,4 +1,8 @@
-
-<ion-avatar routerLink='/account' slot="primary" *ngIf="user">
-  <ion-img  src="{{user.photo}}"></ion-img>
+<ion-avatar
+  class="avatar avatar--sm avatar--pointer avatar--margin-right"
+  slot="primary"
+  *ngIf="user"
+  (click)="onAvatar()"
+>
+  <ion-img src="{{ user.photo }}"></ion-img>
 </ion-avatar>
