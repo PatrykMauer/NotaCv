@@ -11,9 +11,7 @@ import { Platform } from "@ionic/angular";
 
 const { Camera, Filesystem, Storage } = Plugins;
 
-@Injectable({
-  providedIn: "root",
-})
+@Injectable()
 export class PhotoService {
   public photos: Photo[] = [];
   private PHOTO_STORAGE: string = "photos";

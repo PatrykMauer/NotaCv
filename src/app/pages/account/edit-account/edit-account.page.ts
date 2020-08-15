@@ -11,7 +11,7 @@ import { Subscription } from "rxjs";
 
 import { User } from "../../../models/user";
 import { paths } from "../../../shared/paths";
-import { DataService } from "src/app/services/data.service";
+import { UserService } from "src/app/services/user.service";
 
 @Component({
   selector: "app-edit-account",
@@ -29,7 +29,7 @@ export class EditAccountPage implements OnInit, OnDestroy {
   @ViewChild("updateForm", { static: false }) updateForm: FormGroupDirective;
 
   constructor(
-    private dataService: DataService,
+    private dataService: UserService,
     private router: Router,
     private loadingCtrl: LoadingController
   ) {}

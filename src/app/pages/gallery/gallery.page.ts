@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActionSheetController } from "@ionic/angular";
 import { PhotoService } from "../../services/photo.service";
-import { DataService } from "src/app/services/data.service";
+import { UserService } from "src/app/services/user.service";
 import { Router } from "@angular/router";
 
 @Component({
@@ -13,7 +13,7 @@ export class GalleryPage implements OnInit {
   constructor(
     public photoService: PhotoService,
     public actionSheetController: ActionSheetController,
-    public dataService: DataService,
+    public dataService: UserService,
     public router: Router
   ) {}
 

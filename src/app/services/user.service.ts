@@ -8,7 +8,7 @@ const { Camera, Filesystem, Storage } = Plugins;
 @Injectable({
   providedIn: "root",
 })
-export class DataService {
+export class UserService {
   private _selectedPhoto = new BehaviorSubject<string>(null);
   private _user = new BehaviorSubject<User>(
     new User(

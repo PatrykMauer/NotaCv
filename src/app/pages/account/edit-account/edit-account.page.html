@@ -18,85 +18,92 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf="user">
-  <ion-row class="ion-justify-content-center">
-    <img
-      class="circle"
-      src="{{this.selectedPhoto? this.selectedPhoto : user.photo}}"
-    />
-  </ion-row>
-  <ion-row>
-    <ion-label
-      class="custom-file-upload"
-      style="margin: auto; max-width: 200px;"
-      (click)="onEdited()"
-    >
-      <ion-icon margin-right name="cloud-download"></ion-icon> Select photo
-    </ion-label>
-  </ion-row>
+  <ng-container *ngTemplateOutlet="avatar"></ng-container>
+  <ng-container *ngTemplateOutlet="form"></ng-container>
 
-  <form
-    [formGroup]="editProfileForm"
-    #updateForm="ngForm"
-    (ngSubmit)="updateAccount(editProfileForm.value)"
-    *ngIf="user"
-  >
+  <ng-template #avatar>
     <ion-row class="ion-justify-content-center">
-      <ion-col size-md="7">
-        <ion-list>
-          <ion-item>
-            <ion-input
-              placeholder="Username"
-              inputMode="text"
-              clearInput="true"
-              formControlName="username"
-              required
-            ></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input
-              placeholder="First name"
-              inputMode="text"
-              clearInput="true"
-              formControlName="firstName"
-              required
-            ></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input
-              placeholder="Last name"
-              inputMode="text"
-              clearInput="true"
-              formControlName="lastName"
-              required
-            ></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input
-              placeholder="Email"
-              inputMode="email"
-              clearInput="true"
-              formControlName="email"
-              required
-            ></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input
-              placeholder="Phone"
-              inputMode="tel"
-              clearInput="true"
-              formControlName="phone"
-              required
-            ></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label>Gender</ion-label>
-            <ion-select placeholder="Select One" formControlName="gender">
-              <ion-select-option value="Male">Male</ion-select-option>
-              <ion-select-option value="Female">Female</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-      </ion-col>
+      <img
+        class="circle"
+        src="{{this.selectedPhoto? this.selectedPhoto : user.photo}}"
+      />
     </ion-row>
-  </form>
+    <ion-row>
+      <ion-label
+        class="custom-file-upload"
+        style="margin: auto; max-width: 200px;"
+        (click)="onEdited()"
+      >
+        <ion-icon margin-right name="cloud-download"></ion-icon> Select photo
+      </ion-label>
+    </ion-row>
+  </ng-template>
+
+  <ng-template #form>
+    <form
+      [formGroup]="editProfileForm"
+      #updateForm="ngForm"
+      (ngSubmit)="updateAccount(editProfileForm.value)"
+      *ngIf="user"
+    >
+      <ion-row class="ion-justify-content-center">
+        <ion-col size-md="7">
+          <ion-list>
+            <ion-item>
+              <ion-input
+                placeholder="Username"
+                inputMode="text"
+                clearInput="true"
+                formControlName="username"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                placeholder="First name"
+                inputMode="text"
+                clearInput="true"
+                formControlName="firstName"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                placeholder="Last name"
+                inputMode="text"
+                clearInput="true"
+                formControlName="lastName"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                placeholder="Email"
+                inputMode="email"
+                clearInput="true"
+                formControlName="email"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                placeholder="Phone"
+                inputMode="tel"
+                clearInput="true"
+                formControlName="phone"
+                required
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Gender</ion-label>
+              <ion-select placeholder="Select One" formControlName="gender">
+                <ion-select-option value="Male">Male</ion-select-option>
+                <ion-select-option value="Female">Female</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ng-template>
 </ion-content>

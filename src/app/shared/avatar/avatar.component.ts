@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
-import { DataService } from "src/app/services/data.service";
+import { UserService } from "src/app/services/user.service";
 import { User } from "src/app/models/user";
 import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
@@ -14,7 +14,7 @@ export class AvatarComponent implements OnInit, OnDestroy {
   public user: User;
   private userSub: Subscription;
 
-  constructor(private dataService: DataService, private router: Router) {}
+  constructor(private dataService: UserService, private router: Router) {}
 
   ngOnInit() {
     this.dataService.getUser().subscribe(user => (this.user = user));
