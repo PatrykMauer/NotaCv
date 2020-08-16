@@ -10,19 +10,17 @@ const { Camera, Filesystem, Storage } = Plugins;
 })
 export class UserService {
   private _selectedPhoto = new BehaviorSubject<string>(null);
-  private _user = new BehaviorSubject<User>(
-    new User(
-      "Patryk",
-      "Mauer",
+  private _user = new BehaviorSubject<User>({
+    firstName: "Patryk",
+    lastName: "Mauer",
+    photo:
       "https://media-exp1.licdn.com/dms/image/C4E03AQFDagqj7fgQVg/profile-displayphoto-shrink_200_200/0?e=1601510400&v=beta&t=qOoci5KrxNnZGr6l1SJ2t53gfSzaMusPMxyvvgXZYSA",
-      "Going forward is the only direction.",
-      "PatrykMauer",
-      "516 501 402",
-      "patryk.mauer@gmail.com",
-      "Male"
-    )
-  );
-
+    describtion: "Going forward is the only direction.",
+    username: "PatrykMauer",
+    phone: "516 501 402",
+    email: "patryk.mauer@gmail.com",
+    gender: "Male",
+  });
   constructor() {}
 
   getUser() {

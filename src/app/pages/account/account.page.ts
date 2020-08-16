@@ -14,7 +14,6 @@ import { paths } from "src/app/shared/paths";
   selector: "app-account",
   templateUrl: "./account.page.html",
   styleUrls: ["./account.page.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccountPage implements OnInit, OnDestroy {
   public user: User;

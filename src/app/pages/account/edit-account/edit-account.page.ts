@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild, OnDestroy } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  OnDestroy,
+  ChangeDetectionStrategy,
+} from "@angular/core";
 import {
   FormGroup,
   FormControl,
