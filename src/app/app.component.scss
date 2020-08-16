@@ -1,0 +1,119 @@
+ion-menu ion-content {
+  --background: var(--ion-item-background, var(--ion-background-color, #fff));
+}
+
+ion-menu.md ion-content {
+  --padding-start: 0.5rem;
+  --padding-end: 0.5rem;
+  --padding-top: 1.25rem;
+  --padding-bottom: 1.25rem;
+}
+
+ion-menu.md ion-list {
+  padding: 1.25rem 0;
+}
+
+ion-menu.md ion-note {
+  margin-bottom: 2rem;
+}
+
+ion-menu.md ion-list-header,
+ion-menu.md ion-note {
+  padding-left: 0.6rem;
+}
+
+ion-menu.md ion-list#inbox-list {
+  border-bottom: 1px solid var(--ion-color-step-150, #d7d8da);
+}
+
+ion-menu.md ion-list#inbox-list ion-list-header {
+  font-size: 1.4rem;
+  font-weight: 600;
+
+  min-height: 1.25rem;
+}
+
+ion-menu.md ion-list#labels-list ion-list-header {
+  font-size: 1rem;
+
+  margin-bottom: 1.2rem;
+
+  color: #757575;
+
+  min-height: 1.6rem;
+}
+
+ion-menu.md ion-item {
+  --padding-start: 0.6rem;
+  --padding-end: 0.6rem;
+  border-radius: 4px;
+}
+
+ion-menu.md ion-item.selected {
+  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+}
+
+ion-menu.md ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-menu.md ion-item ion-icon {
+  color: #616e7e;
+}
+
+ion-menu.md ion-item ion-label {
+  font-weight: 500;
+}
+
+ion-menu.ios ion-content {
+  --padding-bottom: 1.25rem;
+}
+
+ion-menu.ios ion-list {
+  padding: 1.25rem 0 0 0;
+}
+
+ion-menu.ios ion-note {
+  line-height: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+ion-menu.ios ion-item {
+  --padding-start: 1rem;
+  --padding-end: 1rem;
+  --min-height: 3rem;
+}
+
+ion-menu.ios ion-item.selected ion-icon {
+  color: var(--ion-color-primary);
+}
+
+ion-menu.ios ion-item ion-icon {
+  font-size: 1.5rem;
+  color: #73849a;
+}
+
+ion-menu.ios ion-list#labels-list ion-list-header {
+  margin-bottom: 0.5rem;
+}
+
+ion-menu.ios ion-list-header,
+ion-menu.ios ion-note {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+ion-menu.ios ion-note {
+  margin-bottom: 0.5rem;
+}
+
+ion-note {
+  display: inline-block;
+  font-size: 1rem;
+
+  color: var(--ion-color-medium-shade);
+}
+
+ion-item.selected {
+  --color: var(--ion-color-primary);
+}
