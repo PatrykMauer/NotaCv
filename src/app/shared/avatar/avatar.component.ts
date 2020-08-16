@@ -1,9 +1,9 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { UserService } from "src/app/services/user.service";
-import { User } from "src/app/models/user";
+import { IUser } from "src/app/models/IUser";
 import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
-import { paths } from "../paths";
+import { paths } from "../../models/paths";
 
 @Component({
   selector: "app-avatar",
@@ -11,7 +11,7 @@ import { paths } from "../paths";
   styleUrls: ["./avatar.component.scss"],
 })
 export class AvatarComponent implements OnInit, OnDestroy {
-  public user: User;
+  public user: IUser;
   private userSub: Subscription;
 
   constructor(private dataService: UserService, private router: Router) {}
@@ -20,7 +20,7 @@ export class AvatarComponent implements OnInit, OnDestroy {
     this.dataService.getUser().subscribe(user => (this.user = user));
   }
 
-  onAvatar() {
+  onAvatar(): void {
     this.router.navigateByUrl(paths.account);
   }
 

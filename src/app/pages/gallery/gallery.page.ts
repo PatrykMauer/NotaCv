@@ -3,7 +3,7 @@ import { ActionSheetController } from "@ionic/angular";
 import { PhotoService } from "../../services/photo.service";
 import { UserService } from "src/app/services/user.service";
 import { Router } from "@angular/router";
-import { paths } from "src/app/shared/paths";
+import { paths } from "src/app/models/paths";
 
 @Component({
   selector: "app-gallery",
@@ -11,7 +11,7 @@ import { paths } from "src/app/shared/paths";
   styleUrls: ["./gallery.page.scss"],
 })
 export class GalleryPage implements OnInit {
-  paths: Paths = paths;
+  paths: IPaths = paths;
 
   constructor(
     public photoService: PhotoService,
@@ -24,7 +24,7 @@ export class GalleryPage implements OnInit {
     this.photoService.loadSaved();
   }
 
-  public async showActionSheet(photo: Photo, position) {
+  public async showActionSheet(photo: IPhoto, position) {
     const actionSheet = await this.actionSheetController.create({
       header: "Photos",
       buttons: [

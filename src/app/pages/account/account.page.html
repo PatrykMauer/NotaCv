@@ -8,47 +8,61 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" *ngIf="user">
-  <ion-row class="row row--center">
-    <img class="img img--theme-circle" src="{{user.photo}}" />
-  </ion-row>
-  <ion-row>
-    <ion-label class="label label--theme-upload" (click)="onEdit()">
-      <ion-icon name="create-outline"></ion-icon> Edit profile
-    </ion-label>
-  </ion-row>
-  <ion-row class="row row--center">
-    <ion-text>
-      <h2>{{user.firstName}} {{user.lastName}}</h2>
-    </ion-text>
-  </ion-row>
-  <ion-row class="row row--center">
-    <ion-col size-md="7">
-      <ion-list>
-        <ion-item>
-          <ion-label position="stacked">Username</ion-label>
-          <ion-input color="primary" readonly="true"
-            >{{user.username}}</ion-input
-          >
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">Phone</ion-label>
-          <ion-input color="primary" readonly="true">{{user.phone}}</ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">Email</ion-label>
-          <ion-input color="primary" readonly="true">{{user.email}}</ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label class="bold" position="stacked">Describiton</ion-label>
-          <ion-input color="primary" readonly="true"
-            >{{user.describtion}}</ion-input
-          >
-        </ion-item>
-        <ion-item>
-          <ion-label color="cont" position="stacked">Gender</ion-label>
-          <ion-input color="primary" readonly="true">{{user.gender}}</ion-input>
-        </ion-item>
-      </ion-list>
-    </ion-col>
-  </ion-row>
+  <ng-container *ngTemplateOutlet="avatar"></ng-container>
+  <ng-container *ngTemplateOutlet="form"></ng-container>
+
+  <ng-template #avatar>
+    <ion-row class="row row--center">
+      <img class="img img--theme-circle" src="{{user.photo}}" />
+    </ion-row>
+    <ion-row>
+      <ion-label class="label label--theme-upload" (click)="onEdit()">
+        <ion-icon name="create-outline"></ion-icon> Edit profile
+      </ion-label>
+    </ion-row>
+    <ion-row class="row row--center">
+      <ion-text>
+        <h2>{{user.firstName}} {{user.lastName}}</h2>
+      </ion-text>
+    </ion-row>
+  </ng-template>
+
+  <ng-template #form>
+    <ion-row class="row row--center">
+      <ion-col size-md="7">
+        <ion-list>
+          <ion-item>
+            <ion-label position="stacked">Username</ion-label>
+            <ion-input color="primary" readonly="true"
+              >{{user.username}}</ion-input
+            >
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Phone</ion-label>
+            <ion-input color="primary" readonly="true"
+              >{{user.phone}}</ion-input
+            >
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input color="primary" readonly="true"
+              >{{user.email}}</ion-input
+            >
+          </ion-item>
+          <ion-item>
+            <ion-label class="bold" position="stacked">Describiton</ion-label>
+            <ion-input color="primary" readonly="true"
+              >{{user.describtion}}</ion-input
+            >
+          </ion-item>
+          <ion-item>
+            <ion-label color="cont" position="stacked">Gender</ion-label>
+            <ion-input color="primary" readonly="true"
+              >{{user.gender}}</ion-input
+            >
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ng-template>
 </ion-content>
