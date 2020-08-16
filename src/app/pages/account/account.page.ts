@@ -1,4 +1,9 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  ChangeDetectionStrategy,
+} from "@angular/core";
 import { UserService } from "src/app/services/user.service";
 import { User } from "src/app/models/user";
 import { Subscription } from "rxjs";
@@ -9,6 +14,7 @@ import { paths } from "src/app/shared/paths";
   selector: "app-account",
   templateUrl: "./account.page.html",
   styleUrls: ["./account.page.scss"],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AccountPage implements OnInit, OnDestroy {
   public user: User;

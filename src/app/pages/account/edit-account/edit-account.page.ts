@@ -66,7 +66,7 @@ export class EditAccountPage implements OnInit, OnDestroy {
     });
   }
 
-  submitForm() {
+  submitForm(): void {
     this.updateForm.onSubmit(undefined);
   }
 
@@ -86,25 +86,23 @@ export class EditAccountPage implements OnInit, OnDestroy {
             ? this.selectedPhoto
             : this.user.photo;
           let updatedUser: User = { ...values };
-          const userUpdated = this.dataService.updateUser(updatedUser);
+          if (updatedUser != null) {
+            this.dataService.updateUser(updatedUser);
+          }
 
           loadingEl.dismiss();
 
-          if (userUpdated != null) {
-            this.router.navigateByUrl(paths.account);
-          }
+          this.router.navigateByUrl(paths.account);
         }, 1000);
       });
-
-    this.router.navigateByUrl(paths.account);
   }
 
-  onEdited() {
+  onEdited(): void {
     this.formIsEdited = true;
     this.router.navigateByUrl(paths.gallery);
   }
 
-  onCancel() {
+  onCancel(): void {
     this.dataService.selectPhoto(null);
     this.router.navigateByUrl(paths.account);
   }

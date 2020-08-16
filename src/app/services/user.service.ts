@@ -29,8 +29,9 @@ export class UserService {
     return this._user.asObservable();
   }
 
-  updateUser(user: User) {
+  updateUser(user: User): User {
     this._user.next(user);
+    return;
   }
 
   getSelectedPhoto() {

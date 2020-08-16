@@ -20,7 +20,7 @@ export class AvatarComponent implements OnInit, OnDestroy {
     this.dataService.getUser().subscribe(user => (this.user = user));
   }
 
-  onAvatar() {
+  onAvatar(): void {
     this.router.navigateByUrl(paths.account);
   }
 
