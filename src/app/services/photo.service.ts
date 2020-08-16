@@ -13,7 +13,7 @@ const { Camera, Filesystem, Storage } = Plugins;
 
 @Injectable()
 export class PhotoService {
-  public photos: Photo[] = [];
+  public photos: IPhoto[] = [];
   private PHOTO_STORAGE: string = "photos";
   private platform: Platform;
 
@@ -101,7 +101,7 @@ export class PhotoService {
     }
   }
 
-  public async deletePicture(photo: Photo, position: number) {
+  public async deletePicture(photo: IPhoto, position: number) {
     this.photos.splice(position, 1);
 
     Storage.set({

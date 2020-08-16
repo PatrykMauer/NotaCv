@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { tap, map, take } from "rxjs/operators";
-import { User } from "../models/user";
+import { IUser } from "../models/IUser";
 import { Plugins } from "@capacitor/core";
 const { Camera, Filesystem, Storage } = Plugins;
 
@@ -10,7 +10,7 @@ const { Camera, Filesystem, Storage } = Plugins;
 })
 export class UserService {
   private _selectedPhoto = new BehaviorSubject<string>(null);
-  private _user = new BehaviorSubject<User>({
+  private _user = new BehaviorSubject<IUser>({
     firstName: "Patryk",
     lastName: "Mauer",
     photo:
@@ -27,7 +27,7 @@ export class UserService {
     return this._user.asObservable();
   }
 
-  updateUser(user: User): User {
+  updateUser(user: IUser): IUser {
     this._user.next(user);
     return;
   }

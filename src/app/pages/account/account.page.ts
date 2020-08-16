@@ -5,10 +5,10 @@ import {
   ChangeDetectionStrategy,
 } from "@angular/core";
 import { UserService } from "src/app/services/user.service";
-import { User } from "src/app/models/user";
+import { IUser } from "src/app/models/IUser";
 import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
-import { paths } from "src/app/shared/paths";
+import { paths } from "src/app/models/paths";
 
 @Component({
   selector: "app-account",
@@ -16,7 +16,7 @@ import { paths } from "src/app/shared/paths";
   styleUrls: ["./account.page.scss"],
 })
 export class AccountPage implements OnInit, OnDestroy {
-  public user: User;
+  public user: IUser;
   private userSub: Subscription;
 
   constructor(private dataService: UserService, private router: Router) {}

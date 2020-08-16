@@ -1,11 +1,11 @@
-interface Paths {
-  account: string;
-  editAccount: string;
-  gallery: string;
-  inbox: string;
-  outbox: string;
-  favorites: string;
-  archived: string;
-  trash: string;
-  spam: string;
-}
+export const paths: IPaths = {
+  account: "/account",
+  editAccount: "/account/edit-account",
+  gallery: "/account/edit-account/gallery",
+  inbox: "/inbox",
+  outbox: "/outbox",
+  favorites: "/favorites",
+  archived: "/archived",
+  trash: "/trash",
+  spam: "/spam",
+};

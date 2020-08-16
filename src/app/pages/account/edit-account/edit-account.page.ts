@@ -15,8 +15,8 @@ import { Router } from "@angular/router";
 import { LoadingController } from "@ionic/angular";
 import { Subscription } from "rxjs";
 
-import { User } from "../../../models/user";
-import { paths } from "../../../shared/paths";
+import { IUser } from "../../../models/IUser";
+import { paths } from "../../../models/paths";
 import { UserService } from "src/app/services/user.service";
 
 @Component({
@@ -28,7 +28,7 @@ export class EditAccountPage implements OnInit, OnDestroy {
   private userSub: Subscription;
   private photoSub: Subscription;
   formIsEdited: boolean = false;
-  user: User;
+  user: IUser;
   selectedPhoto: string;
   editProfileForm: FormGroup;
 
@@ -76,7 +76,7 @@ export class EditAccountPage implements OnInit, OnDestroy {
     this.updateForm.onSubmit(undefined);
   }
 
-  async updateAccount(values: User) {
+  async updateAccount(values: IUser) {
     this.loadingCtrl
       .create({
         keyboardClose: true,
@@ -91,7 +91,7 @@ export class EditAccountPage implements OnInit, OnDestroy {
           values.photo = this.selectedPhoto
             ? this.selectedPhoto
             : this.user.photo;
-          let updatedUser: User = { ...values };
+          let updatedUser: IUser = { ...values };
           if (updatedUser != null) {
             this.dataService.updateUser(updatedUser);
           }
